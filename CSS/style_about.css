@@ -16,8 +16,8 @@ header{
     margin-top: 0;
     padding: 15px 0;
     text-align: center;
-  }
-.container {
+}
+ .container {
     max-width: 800px;
     margin: 0 auto;
     background-color: rgb(77, 82, 81);
