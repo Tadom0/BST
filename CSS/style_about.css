@@ -47,3 +47,17 @@ img {
     height: auto;
     border-radius: 10px;
 }
+
+nav {
+    margin: 20px 0;
+    background: #333;
+    padding-right: 0px;
+    padding-left: 0px;
+    text-align: center;
+          
+}
+nav a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: underline
+}
