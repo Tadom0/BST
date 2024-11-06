@@ -17,7 +17,21 @@ header{
     padding: 15px 0;
     text-align: center;
 }
- .container {
+nav {
+    margin: 20px 0;
+    background: #333;
+    padding-right: 0px;
+    padding-left: 0px;
+    text-align: center;
+          
+}
+nav a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: underline
+} 
+
+.container {
     max-width: 800px;
     margin: 0 auto;
     background-color: rgb(77, 82, 81);
@@ -48,16 +62,3 @@ img {
     border-radius: 10px;
 }
 
-nav {
-    margin: 20px 0;
-    background: #333;
-    padding-right: 0px;
-    padding-left: 0px;
-    text-align: center;
-          
-}
-nav a {
-    color: #fff;
-    margin: 0 10px;
-    text-decoration: underline
-}
