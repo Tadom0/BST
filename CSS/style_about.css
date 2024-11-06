@@ -10,6 +10,13 @@ body {
     color: #333;
     padding: 20px;
 }
+header{
+    background: #333;
+    color: #fff;
+    margin-top: 0;
+    padding: 15px 0;
+    text-align: center;
+  }
 .container {
     max-width: 800px;
     margin: 0 auto;
