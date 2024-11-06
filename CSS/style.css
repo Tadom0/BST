@@ -5,6 +5,31 @@ body {
     margin: 0;
     padding: 0;
 }
+header{
+    background: #333;
+    color: #fff;
+    margin-top: 0;
+    padding: 15px 0;
+    text-align: center;
+  }
+  
+  
+  nav a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: underline
+  }
+  
+  
+  
+  nav {
+    margin: 20px 0;
+    background: #333;
+    padding-right: 0px;
+    padding-left: 0px;
+    text-align: center;
+          
+  }
 .contact-container {
     max-width: 600px;
     margin: 50px auto;
