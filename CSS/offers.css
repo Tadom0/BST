@@ -26,7 +26,23 @@ nav a {
     margin: 0 10px;
     text-decoration: underline
 } 
-container1 {
+
+.offers-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.offer-box {
+    background-color: #aba8a8;
+    padding: 20px;
+    border: 1px solid #2b2929;
+    border-radius: 15px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#container1 {
     background-color: #aba8a8;
     font-family: Poppins , sans-serif;
     padding: 5px;
@@ -34,7 +50,7 @@ container1 {
     border-radius: 8px;
     position: relative;
 }
-container2 {
+#container2 {
     background-color: #aba8a8;
     font-family: Poppins , sans-serif;
     padding: 5px;
@@ -42,7 +58,7 @@ container2 {
     border-radius: 8px;
     position: relative;
 }
-container3 {
+#container3 {
     background-color: #aba8a8;
     font-family: Poppins , sans-serif;
     padding: 5px;
@@ -50,7 +66,7 @@ container3 {
     border-radius: 8px;
     position: relative;
 }
-container4 {
+#container4 {
     background-color: #aba8a8;
     font-family: Poppins , sans-serif;
     padding: 5px;
