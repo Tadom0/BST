@@ -49,36 +49,6 @@ h3 {
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-#container1 {
-
-    background-color: #aba8a8;
-    font-family: Poppins , sans-serif;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    position: relative;
-}
-#container2 {
-    background-color: #aba8a8;
-    font-family: Poppins , sans-serif;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    position: relative;
-}
-#container3 {
-    background-color: #aba8a8;
-    font-family: Poppins , sans-serif;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    position: relative;
-}
-#container4 {
-    background-color: #aba8a8;
-    font-family: Poppins , sans-serif;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    position: relative;
+.offers-wrapper h2 {
+    text-align: center;
 }
