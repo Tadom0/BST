@@ -52,3 +52,15 @@ h3 {
 .offers-wrapper h2 {
     text-align: center;
 }
+
+#SO{
+    text-align: center;
+    padding-right: 50%;
+    background-color: red;
+}
+
+#FO{
+    text-align: center;
+    padding-right: 50%;
+    border-color: red;
+}
