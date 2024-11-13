@@ -27,6 +27,13 @@ nav a {
     text-decoration: underline
 } 
 
+h2 {
+    text-align: center
+}
+h3 {
+    text-align: center;
+}
+
 .offers-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -43,6 +50,7 @@ nav a {
 }
 
 #container1 {
+
     background-color: #aba8a8;
     font-family: Poppins , sans-serif;
     padding: 5px;
@@ -70,7 +78,6 @@ nav a {
     background-color: #aba8a8;
     font-family: Poppins , sans-serif;
     padding: 5px;
-    height: 1200px;
     border: 1px solid #ccc;
     border-radius: 8px;
     position: relative;
