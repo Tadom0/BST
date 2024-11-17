@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+/* General Styling */
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
@@ -20,21 +21,14 @@ header h1 {
   font-size: 2em;
 }
 
-nav ul {
-  padding: 0;
-  list-style: none;
-  display: flex;
-  justify-content: center;
+nav {
   margin-top: 10px;
-}
-
-nav ul li {
-  margin: 0 15px;
 }
 
 nav a {
   color: #fff;
   text-decoration: none;
+  margin: 0 15px;
   font-size: 1.1em;
 }
 
@@ -42,6 +36,7 @@ nav a:hover {
   text-decoration: underline;
 }
 
+/* Background Section */
 #BackG {
   background-image: url('https://media.istockphoto.com/id/170450723/photo/a-silver-sports-car-on-black-tile-floor.jpg?s=612x612&w=0&k=20&c=B5BRnhnYzfOf2BE4301r8S7h56GshGUMVAy8QnoKP0Y=');
   background-size: cover;
@@ -53,34 +48,30 @@ nav a:hover {
   align-items: center;
   color: #000000;
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7);
-  font-size: 1.5em; 
+  font-size: 2em;
   margin-top: 0;
   text-align: center;
 }
 
-
-#BackG h2 {
-  font-size: 2.5em;
-}
-
-/* Main Content */
+/* Main Layout */
 #container {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
   gap: 20px;
   padding: 20px;
   flex-wrap: wrap;
 }
 
-#car-of-the-week, #featured-cars {
-  flex: 1 1 45%;  
+#car-of-the-week,
+#browse-more {
+  flex: 1 1 45%;
   max-width: 500px;
 }
 
-h2 {
-  font-size: 1.8em;
+#car-of-the-week h2,
+#browse-more h2 {
   text-align: center;
+  font-size: 1.8em;
 }
 
 h3 {
@@ -96,58 +87,16 @@ h3 {
   margin: 0 auto;
 }
 
-/* Mobile-responsive Styles */
+/* Responsive Design */
 @media (max-width: 768px) {
-  header h1 {
-      font-size: 1.5em;
-  }
-
-  nav ul {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  nav ul li {
-      margin-bottom: 10px;
-  }
-
-  #BackG h2 {
-      font-size: 2em;
-  }
-
   #container {
-      flex-direction: column; 
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
 
-  #car-of-the-week, #featured-cars {
-      flex: 1 1 100%;
-  }
-
-  .container_img {
-      max-width: 400px;
-  }
-}
-
-@media (max-width: 480px) {
-  header h1 {
-      font-size: 1.2em;
-  }
-
-  nav a {
-      font-size: 1em;
-  }
-
-  #BackG h2 {
-      font-size: 1.8em;
-  }
-
-  h2 {
-      font-size: 1.3em;
-  }
-
-  .container_img {
-      max-width: 350px;
+  #car-of-the-week,
+  #browse-more {
+    flex: 1 1 100%;
   }
 }
 
