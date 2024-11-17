@@ -48,8 +48,9 @@ main {
 }
 
 h2 {
-    font-size: 1.8em;
-    text-align: center;
+    color: #1f2225;
+    margin-bottom: 10px;
+    font-weight: normal;
 }
 
 p {
