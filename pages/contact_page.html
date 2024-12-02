@@ -1,5 +1,3 @@
-<!-- AUTHOR: Bobby O'Callaghan -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,16 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/style.css">
     <title>Contact Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header nav {
+            margin-top: 10px;
+        }
+
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .contact-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .contact-container img {
+            width: 150px;
+            border-radius: 50%;
+        }
+
+        .contact-info {
+            margin-top: 15px;
+        }
+
+        .contact-info a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .form-container {
+            margin: 40px auto;
+            padding: 20px;
+            max-width: 400px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .form-container p {
+            text-align: center;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-container form label {
+            margin-bottom: 5px;
+            font-size: 0.9em;
+            color: #333;
+        }
+
+        .form-container form input,
+        .form-container form select,
+        .form-container form textarea {
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-container form button {
+            padding: 10px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-container form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     
     <header>
         <h1>Wheels and Deals</h1>
-            <nav>
-                <a href="../index.html">Home</a>
-                <a href="../pages/about.html" >About</a>
-                <a href="../pages/offers.html" >Offers & Deals</a>
-            </nav>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../pages/about.html">About</a>
+            <a href="../pages/offers.html">Offers & Deals</a>
+        </nav>
     </header>
     
     <div class="contact-container">
@@ -31,5 +134,35 @@
             <p>Location: Dublin, Ireland</p>
         </div>
     </div>
+
+    <div class="form-container">
+        <h2>Contact Us</h2>
+        <p>Let's get this conversation started. Tell us a bit about yourself, and we'll get in touch as soon as we can.</p>
+        <form action="submit_form.php" method="POST">
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" required>
+
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" name="last-name" placeholder="Enter your last name" required>
+
+            <label for="email">Work Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+
+            <label for="inquiry-reason">Reason for Inquiry</label>
+            <select id="inquiry-reason" name="inquiry-reason" required>
+                <option value="general">General</option>
+                <option value="feedback">Feedback</option>
+                <option value="technical-support">Technical Support</option>
+            </select>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Enter your message" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
 </body>
 </html>
+
+
