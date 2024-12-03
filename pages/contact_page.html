@@ -89,7 +89,7 @@
         .form-container form input,
         .form-container form select,
         .form-container form textarea {
-            margin-bottom: 5px;
+            margin-bottom: 15px;
             padding: 10px;
             font-size: 1em;
             border: 1px solid #ccc;
@@ -110,26 +110,34 @@
             background-color: #0056b3;
         }
 
-        .form-container .error-message {
-            font-size: 0.85em;
-            color: #d9534f;
-            display: none;
-            margin-bottom: 10px;
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: -10px;
         }
 
-        .form-container .success-icon,
-        .form-container .error-icon {
-            display: none;
-            margin-left: 5px;
+        .success-message {
+            color: green;
+            font-size: 1em;
+            margin-top: 20px;
+        }
+
+        .input-feedback {
             font-size: 1.2em;
+            margin-left: 10px;
+            display: inline-block;
+        }
+        
+        .valid {
+            color: green;
+        }
+        
+        .invalid {
+            color: red;
         }
 
-        .form-container .success-icon {
-            color: #5cb85c;
-        }
-
-        .form-container .error-icon {
-            color: #d9534f;
+        #form-response {
+            display: none;
         }
     </style>
 </head>
@@ -160,78 +168,106 @@
     <div class="form-container">
         <h2>Contact Us</h2>
         <p>Let's get this conversation started. Tell us a bit about yourself, and we'll get in touch as soon as we can.</p>
-        <form id="contact-form" action="submit_form.php" method="POST" novalidate>
+        <form id="contact-form">
             <label for="first-name">First Name</label>
-            <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" pattern="[A-Za-z]+" required>
-            <span class="success-icon">✔</span><span class="error-icon">✖</span>
-            <div id="first-name-error" class="error-message">Please enter a valid first name (letters only).</div>
+            <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" required>
+            <span id="first-name-feedback" class="input-feedback"></span>
 
             <label for="last-name">Last Name</label>
-            <input type="text" id="last-name" name="last-name" placeholder="Enter your last name" pattern="[A-Za-z]+" required>
-            <span class="success-icon">✔</span><span class="error-icon">✖</span>
-            <div id="last-name-error" class="error-message">Please enter a valid last name (letters only).</div>
+            <input type="text" id="last-name" name="last-name" placeholder="Enter your last name" required>
+            <span id="last-name-feedback" class="input-feedback"></span>
 
             <label for="email">Work Email</label>
             <input type="email" id="email" name="email" placeholder="Enter your email address" required>
-            <span class="success-icon">✔</span><span class="error-icon">✖</span>
-            <div id="email-error" class="error-message">Please enter a valid email address.</div>
+            <span id="email-feedback" class="input-feedback"></span>
 
             <label for="inquiry-reason">Reason for Inquiry</label>
             <select id="inquiry-reason" name="inquiry-reason" required>
-                <option value="">Select a reason</option>
                 <option value="general">General</option>
                 <option value="feedback">Feedback</option>
                 <option value="technical-support">Technical Support</option>
             </select>
-            <span class="success-icon">✔</span><span class="error-icon">✖</span>
-            <div id="inquiry-reason-error" class="error-message">Please select a reason for your inquiry.</div>
 
             <label for="message">Message</label>
-            <textarea id="message" name="message" rows="4" placeholder="Enter your message" minlength="10" required></textarea>
-            <span class="success-icon">✔</span><span class="error-icon">✖</span>
-            <div id="message-error" class="error-message">Please enter a message (at least 10 characters).</div>
+            <textarea id="message" name="message" rows="4" placeholder="Enter your message" required></textarea>
+            <span id="message-feedback" class="input-feedback"></span>
 
             <button type="submit">Submit</button>
         </form>
+
+        <div id="form-response" class="success-message"></div>
     </div>
 
     <script>
-        const form = document.getElementById('contact-form');
-        const inputs = form.querySelectorAll('input, select, textarea');
+        document.getElementById("contact-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const firstName = document.getElementById("first-name").value.trim();
+            const lastName = document.getElementById("last-name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const message = document.getElementById("message").value.trim();
+            const inquiryReason = document.getElementById("inquiry-reason").value;
 
-        inputs.forEach(input => {
-            input.addEventListener('input', validateInput);
-            input.addEventListener('blur', validateInput);
-        });
+            let isValid = true;
 
-        function validateInput(event) {
-            const input = event.target;
-            const error = input.nextElementSibling.nextElementSibling;
-            const successIcon = input.nextElementSibling;
-            const errorIcon = successIcon.nextElementSibling;
+            document.getElementById("form-response").style.display = "none"; 
+            document.getElementById("form-response").innerHTML = "";
 
-            if (input.validity.valid) {
-                error.style.display = 'none';
-                successIcon.style.display = 'inline';
-                errorIcon.style.display = 'none';
+            if (!firstName) {
+                document.getElementById("first-name-feedback").textContent = "✖";
+                document.getElementById("first-name-feedback").classList.add("invalid");
+                isValid = false;
             } else {
-                error.style.display = 'block';
-                successIcon.style.display = 'none';
-                errorIcon.style.display = 'inline';
-
-                if (input.id === 'message' && input.value.length < 10) {
-                    error.textContent = "Please enter a message (at least 10 characters).";
-                }
+                document.getElementById("first-name-feedback").textContent = "✔";
+                document.getElementById("first-name-feedback").classList.remove("invalid");
+                document.getElementById("first-name-feedback").classList.add("valid");
             }
-        }
-    </script>
 
+            if (!lastName) {
+                document.getElementById("last-name-feedback").textContent = "✖";
+                document.getElementById("last-name-feedback").classList.add("invalid");
+                isValid = false;
+            } else {
+                document.getElementById("last-name-feedback").textContent = "✔";
+                document.getElementById("last-name-feedback").classList.remove("invalid");
+                document.getElementById("last-name-feedback").classList.add("valid");
+            }
+
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!email || !email.match(emailPattern)) {
+                document.getElementById("email-feedback").textContent = "Please enter a valid email address.";
+                document.getElementById("email-feedback").classList.add("invalid");
+                isValid = false;
+            } else {
+                document.getElementById("email-feedback").textContent = "✔";
+                document.getElementById("email-feedback").classList.remove("invalid");
+                document.getElementById("email-feedback").classList.add("valid");
+            }
+
+            if (!message) {
+                document.getElementById("message-feedback").textContent = "✖";
+                document.getElementById("message-feedback").classList.add("invalid");
+                isValid = false;
+            } else {
+                document.getElementById("message-feedback").textContent = "✔";
+                document.getElementById("message-feedback").classList.remove("invalid");
+                document.getElementById("message-feedback").classList.add("valid");
+            }
+
+            if (isValid) {
+                document.getElementById("form-response").style.display = "block"; 
+                document.getElementById("form-response").textContent = "Thank you for your submission! We will get in touch with you shortly.";
+                document.getElementById("form-response").classList.add("success-message");
+                document.getElementById("form-response").classList.remove("error-message");
+
+                document.getElementById("form-container").style.display = "none";
+            } else {
+                document.getElementById("form-response").style.display = "block"; 
+                document.getElementById("form-response").textContent = "Please fix the errors and try again.";
+                document.getElementById("form-response").classList.add("error-message");
+                document.getElementById("form-response").classList.remove("success-message");
+            }
+        });
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
