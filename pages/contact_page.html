@@ -89,7 +89,7 @@
         .form-container form input,
         .form-container form select,
         .form-container form textarea {
-            margin-bottom: 15px;
+            margin-bottom: 5px;
             padding: 10px;
             font-size: 1em;
             border: 1px solid #ccc;
@@ -109,6 +109,28 @@
         .form-container form button:hover {
             background-color: #0056b3;
         }
+
+        .form-container .error-message {
+            font-size: 0.85em;
+            color: #d9534f;
+            display: none;
+            margin-bottom: 10px;
+        }
+
+        .form-container .success-icon,
+        .form-container .error-icon {
+            display: none;
+            margin-left: 5px;
+            font-size: 1.2em;
+        }
+
+        .form-container .success-icon {
+            color: #5cb85c;
+        }
+
+        .form-container .error-icon {
+            color: #d9534f;
+        }
     </style>
 </head>
 <body>
@@ -123,7 +145,7 @@
     </header>
     
     <div class="contact-container">
-        <img src="../Media/Screenshot 2024-10-02 at 16.25.23.png" class="contact-img" alt="John O'Reilly profie picture">
+        <img src="../Media/Screenshot 2024-10-02 at 16.25.23.png" class="contact-img" alt="John O'Reilly profile picture">
         <h2>John O'Reilly</h2>
         <p>CEO</p>
         <p>For any enquiries, please choose a contact method below:</p>
@@ -138,31 +160,78 @@
     <div class="form-container">
         <h2>Contact Us</h2>
         <p>Let's get this conversation started. Tell us a bit about yourself, and we'll get in touch as soon as we can.</p>
-        <form action="submit_form.php" method="POST">
+        <form id="contact-form" action="submit_form.php" method="POST" novalidate>
             <label for="first-name">First Name</label>
-            <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" required>
+            <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" pattern="[A-Za-z]+" required>
+            <span class="success-icon">✔</span><span class="error-icon">✖</span>
+            <div id="first-name-error" class="error-message">Please enter a valid first name (letters only).</div>
 
             <label for="last-name">Last Name</label>
-            <input type="text" id="last-name" name="last-name" placeholder="Enter your last name" required>
+            <input type="text" id="last-name" name="last-name" placeholder="Enter your last name" pattern="[A-Za-z]+" required>
+            <span class="success-icon">✔</span><span class="error-icon">✖</span>
+            <div id="last-name-error" class="error-message">Please enter a valid last name (letters only).</div>
 
             <label for="email">Work Email</label>
             <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+            <span class="success-icon">✔</span><span class="error-icon">✖</span>
+            <div id="email-error" class="error-message">Please enter a valid email address.</div>
 
             <label for="inquiry-reason">Reason for Inquiry</label>
             <select id="inquiry-reason" name="inquiry-reason" required>
+                <option value="">Select a reason</option>
                 <option value="general">General</option>
                 <option value="feedback">Feedback</option>
                 <option value="technical-support">Technical Support</option>
             </select>
+            <span class="success-icon">✔</span><span class="error-icon">✖</span>
+            <div id="inquiry-reason-error" class="error-message">Please select a reason for your inquiry.</div>
 
             <label for="message">Message</label>
-            <textarea id="message" name="message" rows="4" placeholder="Enter your message" required></textarea>
+            <textarea id="message" name="message" rows="4" placeholder="Enter your message" minlength="10" required></textarea>
+            <span class="success-icon">✔</span><span class="error-icon">✖</span>
+            <div id="message-error" class="error-message">Please enter a message (at least 10 characters).</div>
 
             <button type="submit">Submit</button>
         </form>
     </div>
 
+    <script>
+        const form = document.getElementById('contact-form');
+        const inputs = form.querySelectorAll('input, select, textarea');
+
+        inputs.forEach(input => {
+            input.addEventListener('input', validateInput);
+            input.addEventListener('blur', validateInput);
+        });
+
+        function validateInput(event) {
+            const input = event.target;
+            const error = input.nextElementSibling.nextElementSibling;
+            const successIcon = input.nextElementSibling;
+            const errorIcon = successIcon.nextElementSibling;
+
+            if (input.validity.valid) {
+                error.style.display = 'none';
+                successIcon.style.display = 'inline';
+                errorIcon.style.display = 'none';
+            } else {
+                error.style.display = 'block';
+                successIcon.style.display = 'none';
+                errorIcon.style.display = 'inline';
+
+                if (input.id === 'message' && input.value.length < 10) {
+                    error.textContent = "Please enter a message (at least 10 characters).";
+                }
+            }
+        }
+    </script>
+
 </body>
 </html>
+
+
+
+
+
 
 
